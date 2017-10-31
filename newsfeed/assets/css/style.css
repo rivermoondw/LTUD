@@ -8,7 +8,6 @@ Version: 1.0
 License: GPL
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
-
 body{background:#f5f5f5}
 ul{padding:0; margin:0; list-style:none}
 a{text-decoration:none; color:#2f2f2f}
@@ -57,15 +56,42 @@ img:hover{opacity:0.75}
 .top_nav li a{display:inline-block; border-right:1px solid #333; color:#fff; font-size:11px; font-weight:bold; padding:20px 15px; text-transform:uppercase; -webkit-transition:all 0.5s; -o-transition:all 0.5s; transition:all 0.5s}
 .top_nav li a:hover{background-color:#d083cf}
 .header_top_right{float:left; display:inline; width:50%; text-align:right}
-.header_top_right > p{color:#fff; display:inline-block; float:right; font:bold 12px sans-serif; margin-bottom:0; padding-bottom:20px; padding-right:8px; padding-top:20px}
-.header_bottom{background-color:#fff; display:inline; float:left; padding:15px 30px 15px; width:100%}
+.header_top_right > p{color:#fff; display:inline-block; float:right; font:bold 12px sans-serif; margin-bottom:0; padding-top:17px}
+.header_bottom{background-color:#0868ac; display:inline; float:left; padding:15px 30px 15px; width:100%}
 .logo_area{display:inline; float:left; width:31%}
 .logo{font-size:45px; font-weight:bold; color:#000; font-family:'Varela',sans-serif}
 .logo img{max-width:100%}
 .logo img:hover{opacity:1}
 .logo > span{ margin-left:-14px}
-.add_banner{float:right; width:728px; height:90px}
-.add_banner img{width:100%; height:100%}
+.user{font-size: 1.1em; 
+	position:absolute; 
+	right: 220px; 
+	top: 12px
+}
+.user a {
+	color: #f2f2f2
+}
+.search{
+	position: absolute;
+	float: right; 
+	right: 10px; 
+	top: 10px; 
+	width: 200px
+}
+.search form{
+	position: relative
+}
+.search input[type="search"]{
+	color: #f2f2f2; 
+	background-color: rbga(0,0,0,0.2); 
+	padding: 0 28px 0 6px
+}
+.search form i{
+	line-height: 34px
+}
+#navbar{
+	background-color: 084081;
+}
 #navArea{float:left; display:inline; width:100%; padding:0 30px; background-color:#fff}
 .navbar{border:medium none; border-radius:0}
 .navbar-inverse .navbar-nav > li > a{border-left:1px solid #383838; color:#ddd; font-family:'Oswald',sans-serif; display:inline-block; height:50px; line-height:50px; padding:0 14px; text-shadow:0 1px 1px #000; text-transform:uppercase; -webkit-transition:all 0.5s; -mz-transition:all 0.5s; -ms-transition:all 0.5s; -o-transition:all 0.5s; transition:all 0.5s}
