@@ -5,15 +5,26 @@
         <div class="box-body">
           <div class="form-group">
             <label for="">Tiêu đề</label>
-            <input type="type" class="form-control" placeholder="Nhập tiêu đề" name="title">
+            <input type="type" class="form-control" placeholder="Nhập tiêu đề" name="title" value="<%=result.title%>">
+          </div>
+          <div class="form-group">
+            <label for="">Thứ tự</label>
+            <input type="type" class="form-control" placeholder="Nhập thứ tự" name="order_sort" value="<%=result.order_sort%>">
           </div>
           <div class="form-group">
             <label for="">Mô tả</label>
-            <textarea name="description" class="form-control" placeholder="Nhập mô tả" rows="3"></textarea>
+            <textarea name="description" class="form-control" placeholder="Nhập mô tả" rows="3"><%=result.description%></textarea>
+          </div>
+          <div class="form-group">
+            <label for="">Hiện/ẩn</label>
+            <select name="show">
+              <option value="1" <% if (result.show == 1) { %> selected <% } %>>Hiện</option>
+              <option value="0" <% if (result.show == 0) { %> selected <% } %>>Ẩn</option>
+            </select>
           </div>
         </div>
         <div class="box-footer text-center">
-          <button type="submit" class="btn btn-primary" name="submit">Xác nhận</button>
+          <button type="submit" class="btn btn-primary" name="submit" value="submit">Xác nhận</button>
         </div>
       </form>
     </div>

@@ -1,18 +1,13 @@
 var mysql = require('mysql');
 var database = require('../config/database.js');
-
-var con = mysql.createConnection(database);
-
-con.connect(function(err){
-	if (err) throw err;
-	console.log('Connected');
+var squel = require('squel');
+squel.registerValueHandler(Date, function(date) {
+  return '"' + date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() + '"';
 });
-
-exports.insert = function(table, data) {
-	var sql = "INSERT INTO ?? SET ?";
-	var query = con.query(sql, [table, data], function(err, result, fields){
-		if (err) throw err;
-		console.log(query.sql);
-		console.log("1 records inserted");
-	});
-}
+var con = mysql.createConnection(database);
+con.connect(function(err) {
+  if (err) throw err;
+  console.log('database connected');
+});
+exports.con = con;
+exports.squel = squel;

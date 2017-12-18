@@ -1,0 +1,63 @@
+<footer id="footer">
+    <div class="footer_top">
+      <div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6">
+			  <div class="footer_widget wow fadeInLeftBig">
+				<h2>Liên hệ</h2>
+				<p>Nhóm 1</p>
+				<p>59PM2</p>
+				<address>
+				Trường Đại học Xây dựng
+				</address>
+			  </div>
+			</div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <div class="footer_widget wow fadeInDown">
+            <h2>Tag</h2>
+            <ul class="tag_nav">
+              <li><a href="#">Games</a></li>
+              <li><a href="#">Sports</a></li>
+              <li><a href="#">Fashion</a></li>
+              <li><a href="#">Business</a></li>
+              <li><a href="#">Life &amp; Style</a></li>
+              <li><a href="#">Technology</a></li>
+              <li><a href="#">Photo</a></li>
+              <li><a href="#">Slider</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer_bottom">
+      <p class="copyright">Copyright &copy; 2045 <a href="index.html">NewsFeed</a></p>
+      <p class="developer">Developed By Wpfreeware</p>
+    </div>
+  </footer>
+</div>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/wow.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/slick.min.js"></script>
+<script src="assets/js/jquery.li-scroller.1.0.js"></script>
+<script src="assets/js/jquery.newsTicker.min.js"></script>
+<script src="assets/js/jquery.fancybox.pack.js"></script>
+<script src="assets/js/custom.js"></script>
+<script>
+  $(document).ready(function(){
+    var clocker = setInterval(function(){
+      var d = new Date();
+      var datetime = addZero(d.getDate()) + '/' + addZero(d.getMonth()+1) + '/' + d.getFullYear() + ' ' + addZero(d.getHours()) + ':' + addZero(d.getMinutes()) + ':' + addZero(d.getSeconds());
+      $('#clocker').html(datetime);
+    },1000);
+  });
+  function addZero(number) {
+    var temp;
+    if (number < 10) {
+      temp = '0'+number;
+    }
+    else temp = number;
+    return temp;
+  }
+</script>
+</body>
+</html>

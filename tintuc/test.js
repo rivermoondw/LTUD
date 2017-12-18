@@ -1,11 +1,38 @@
-var date = new Date();
-var day = date.getFullYear()+'-'+addZero((date.getMonth()+1))+'-'+addZero(date.getDate())+' '+addZero((date.getHours()+1))+':'+addZero(date.getMinutes())+':'+addZero(date.getSeconds());
-console.log(day);
+var mysql = require('mysql');
+var squel = require('squel');
+var bcrypt = require('bcrypt');
+var md5 = require('md5');
 
-function addZero(str) {
-	str = str.toString();
-	if (str.length == 1) {
-		str = str.replace(str, '0'+str);
-	}
-	return str
+const saltRounds = 10;
+const myPassword = '123123';
+
+var salt = bcrypt.genSaltSync(saltRounds);
+var hash = bcrypt.hashSync(md5(myPassword), salt);
+console.log(salt);
+console.log(hash);
+
+if (bcrypt.compareSync(md5(myPassword), md5(hash))) {
+	console.log("ok");
 }
+// var database = {
+// 	host: "127.0.0.1",
+// 	user: "root",
+// 	password: "",
+// 	// dateString: true,
+// 	database: "tintuc"
+// }
+//
+// var con = mysql.createConnection(database);
+//
+// con.connect(function(err){
+// 	if (err) throw err;
+// 	console.log('Connected');
+// });
+// var table = 'article_contents';
+// var fields = ['id', 'title'];
+// var data = [1, 'test'];
+// var sql = squel.insert().into(table);
+// fields.map(function(field, i){
+// 	sql = sql.set(field,data[i]);
+// });
+// console.log(sql.toString());

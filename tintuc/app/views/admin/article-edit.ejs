@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="box box-primary box-solid">
+      <form action="" method="post" role="form">
+        <div class="box-body">
+          <div class="form-group">
+            <label for="">Tiêu đề</label>
+            <input type="type" class="form-control" placeholder="Nhập tiêu đề" name="title" value="<%= result.title %>">
+          </div>
+          <div class="form-group">
+            <label for="">Giới thiệu bài viết</label>
+            <textarea name="introduction" class="form-control" placeholder="Nhập giới thiệu" rows="3"><%= result.introduction %></textarea>
+          </div>
+          <div class="form-group">
+            <label for="">Nội dung bài viết</label>
+            <textarea name="content" class="form-control" placeholder="Nhập nội dung" rows="3"><%= result.content %></textarea>
+          </div>
+          <div class="form-group">
+            <label for="">Danh mục</label>
+            <select name="cat_id">
+              <% if(cats.length>0){
+                cats.forEach(function(cat){ %>
+                  <option value="<%=cat.id%>" <% if (result.cat_id == cat.id) { %> selected <% } %> ><%=cat.title%></option>
+              <% });} %>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="">Hiện/ẩn</label>
+            <select name="show">
+              <option value="1">Hiện</option>
+              <option value="0">Ẩn</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="">Tin nổi bật</label>
+            <select name="hot_news">
+              <option value="0">Không</option>
+              <option value="1">Có</option>
+            </select>
+          </div>
+        </div>
+        <div class="box-footer text-center">
+          <button type="submit" class="btn btn-primary" name="submit" value="submit">Xác nhận</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> <!-- ./row -->
