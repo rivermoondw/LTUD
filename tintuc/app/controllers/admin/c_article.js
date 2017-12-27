@@ -11,6 +11,7 @@ exports.add = function(req, res) {
 	data.beforeBody = '';
   data.username = req.user[0].name;
   data.role = req.user[0].title;
+  data.avatar = req.user[0].avatar;
   data.active = 'add';
   data.active_parent = active_parent;
   data.view = 'article-add';
@@ -25,8 +26,8 @@ exports.add = function(req, res) {
 exports.postAdd = function(req, res) {
   if (req.body.submit) {
     var date = new Date();
-    var fields = ['title', 'slug', 'introduction', 'content', 'cat_id', 'view_count', 'show', 'hot_news', 'created_at', 'updated_at'];
-    var data = [req.body.title, myFunction.slug(req.body.title), req.body.introduction, req.body.content, parseInt(req.body.cat_id), parseInt(1), parseInt(req.body.show), parseInt(req.body.hot_news), date, date];
+    var fields = ['title', 'slug', 'introduction', 'content', 'cat_id', 'view_count', 'show', 'hot_news', 'created_at', 'updated_at', 'url_img', 'user_id'];
+    var data = [req.body.title, myFunction.slug(req.body.title), req.body.introduction, req.body.content, parseInt(req.body.cat_id), parseInt(1), parseInt(req.body.show), parseInt(req.body.hot_news), date, date, req.file.filename, req.user[0].id];
     m_article.add(fields, data);
     res.redirect('/admin/article/list');
   }
@@ -37,6 +38,7 @@ exports.list = function(req, res) {
 	data.beforeBody = '';
   data.username = req.user[0].name;
   data.role = req.user[0].title;
+  data.avatar = req.user[0].avatar;
   data.active = 'list';
   data.active_parent = active_parent;
   data.view = 'article-list';
@@ -62,6 +64,7 @@ exports.edit = function(req, res) {
     	data.beforeBody = '';
       data.username = req.user[0].name;
       data.role = req.user[0].title;
+      data.avatar = req.user[0].avatar;
       data.active_parent = active_parent;
       data.active = 'edit';
       data.view = 'article-edit';

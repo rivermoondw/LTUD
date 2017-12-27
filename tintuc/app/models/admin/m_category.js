@@ -8,6 +8,7 @@ exports.add = function(fields, data) {
 		sql = sql.set(field,data[i]);
 	});
 	var query = con.query(sql.toString(), function(err, result, fields){
+		console.log(query.sql);
 		if (err) throw err;
 		console.log("1 record inserted");
 	});

@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-sm-12">
     <div class="box box-primary box-solid">
-      <form action="" method="post" role="form">
+      <form action="" method="post" role="form" enctype="multipart/form-data">
         <div class="box-body">
           <div class="form-group">
             <label for="">Email</label>
@@ -16,7 +16,12 @@
             <input type="type" class="form-control" placeholder="Nhập họ tên" name="name">
           </div>
           <div class="form-group">
+            <label for="">Ảnh đại diện</label>
+            <input type="file" name="avatar" />
+          </div>
+          <div class="form-group">
             <label for="">Vai trò</label>
+            <br>
             <select name="role_id">
               <% if(roles.length>0){
                 roles.forEach(function(role){ %>

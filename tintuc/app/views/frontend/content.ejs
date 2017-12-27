@@ -1,0 +1,35 @@
+  <section id="contentSection">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="left_content">
+          <div class="single_page">
+            <ol class="breadcrumb">
+              <li><a href="/">Home</a></li>
+              <li class="active"><%=catTitle%></li>
+            </ol>
+            <h1><%= newsContent.newsTitle %></h1>
+            <div class="post_commentbox"> <a href="#"><i class="fa fa-user"></i><%= newsContent.name %></a> <span><i class="fa fa-calendar"></i>6:49 AM</span> <a href="#"><i class="fa fa-tags"></i><%= newsContent.catTitle %></a> </div>
+            <div class="single_page_content"> <img class="img-center" src="upload/article/<%= newsContent.url_img %>" alt="">
+              <p><%= newsContent.content %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4">
+        <aside class="right_content">
+          <div class="single_sidebar">
+            <h2><span>Bài viết nổi bật</span></h2>
+            <ul class="spost_nav">
+              <% hotNews.forEach(function(news){ %>
+                <li>
+                  <div class="media"> <a href="<%= news.catSlug %>/<%= news.newsSlug %>" class="media-left"> <img alt="" src="upload/article/<%= news.url_img %>"> </a>
+                    <div class="media-body"> <a href="<%= news.catSlug %>/<%= news.newsSlug %>" class="catg_title"><%= news.newsTitle %></a> </div>
+                  </div>
+                </li>
+              <% }) %>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>

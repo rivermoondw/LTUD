@@ -1,0 +1,100 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="box box-primary box-solid">
+      <form action="" method="post" role="form">
+        <div class="box-body">
+          <div class="form-group">
+            <label for="">Vai trò</label>
+            <input type="type" class="form-control" placeholder="Nhập vai trò" name="title" value="<%=result.title%>">
+          </div>
+          <div class="form-group">
+            <label for="">Mô tả</label>
+            <textarea name="description" class="form-control" placeholder="Nhập mô tả" rows="3"><%=result.description%></textarea>
+          </div>
+          <div class="form-group">
+            <label>Quyền</label>
+            <hr>
+            <label>Vai trò</label>
+            <br>
+            <label>
+              <input type="checkbox" name="permission[]" value="/admin/role/list" <% if (permissions.search('/admin/role/list') != -1) { %>checked<% }%>>
+              Xem
+            </label>
+            <label>
+              <input type="checkbox" name="permission[]" value="/admin/role/add" <% if (permissions.search('/admin/role/add') != -1) { %>checked<% }%>>
+              Thêm
+            </label>
+            <label>
+              <input type="checkbox" name="permission[]" value="/admin/role/edit" <% if (permissions.search('/admin/role/edit') != -1) { %>checked<% }%>>
+              Sửa
+            </label>
+            <label>
+              <input type="checkbox" name="permission[]" value="/admin/role/del" <% if (permissions.search('/admin/role/del') != -1) { %>checked<% }%>>
+              Xóa
+            </label>
+            <hr>
+            <label>Danh mục</label>
+            <br>
+            <label>
+              <input type="checkbox" name="permission[]" value="/admin/category/list" <% if (permissions.search('/admin/category/list') != -1) { %>checked<% }%>>
+              Xem
+            </label>
+            <label>
+              <input type="checkbox" name="permission[]" value="/admin/category/add" <% if (permissions.search('/admin/category/add') != -1) { %>checked<% }%>>
+              Thêm
+            </label>
+            <label>
+              <input type="checkbox" name="permission[]" value="/admin/category/edit" <% if (permissions.search('/admin/category/edit') != -1) { %>checked<% }%>>
+              Sửa
+            </label>
+            <label>
+              <input type="checkbox" name="permission[]" value="/admin/category/del" <% if (permissions.search('/admin/category/del') != -1) { %>checked<% }%>>
+              Xóa
+            </label>
+            <hr>
+            <label>Bài viết</label>
+            <br>
+            <label>
+              <input type="checkbox" name="permission[]" value="/admin/article/list" <% if (permissions.search('/admin/article/list') != -1) { %>checked<% }%>>
+              Xem
+            </label>
+            <label>
+              <input type="checkbox" name="permission[]" value="/admin/article/add" <% if (permissions.search('/admin/article/add') != -1) { %>checked<% }%>>
+              Thêm
+            </label>
+            <label>
+              <input type="checkbox" name="permission[]" value="/admin/article/edit" <% if (permissions.search('/admin/article/edit') != -1) { %>checked<% }%>>
+              Sửa
+            </label>
+            <label>
+              <input type="checkbox" name="permission[]" value="/admin/article/del" <% if (permissions.search('/admin/article/del') != -1) { %>checked<% }%>>
+              Xóa
+            </label>
+            <hr>
+            <label>Tài khoản</label>
+            <br>
+            <label>
+              <input type="checkbox" name="permission[]" value="/admin/user/list" <% if (permissions.search('/admin/user/list') != -1) { %>checked<% }%>>
+              Xem
+            </label>
+            <label>
+              <input type="checkbox" name="permission[]" value="/admin/user/add" <% if (permissions.search('/admin/user/add') != -1) { %>checked<% }%>>
+              Thêm
+            </label>
+            <label>
+              <input type="checkbox" name="permission[]" value="/admin/user/edit" <% if (permissions.search('/admin/user/edit') != -1) { %>checked<% }%>>
+              Sửa
+            </label>
+            <label>
+              <input type="checkbox" name="permission[]" value="/admin/user/del" <% if (permissions.search('/admin/user/del') != -1) { %>checked<% }%>>
+              Xóa
+            </label>
+          </div>
+        </div>
+        <div class="box-footer text-center">
+          <button type="submit" class="btn btn-primary" name="submit" value="submit">Xác nhận</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> <!-- ./row -->

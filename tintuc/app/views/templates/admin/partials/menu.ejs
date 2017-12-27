@@ -4,11 +4,11 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="upload/user/<%=avatar%>" class="img-circle" alt="User Image" width="160" height="160">
         </div>
         <div class="pull-left info">
           <p><%= username %></p>
-          <a href="#"><i class="fa fa-circle text-success"></i> <%= role %></a>
+          <a href="javascript:void(0)"><i class="fa fa-circle text-success"></i> <%= role %></a>
         </div>
       </div>
       <!-- search form -->
@@ -28,7 +28,7 @@
         <li class="treeview <% if (active_parent == 'category') { %>
           active
         <% } %>">
-          <a href="#">
+          <a href="javascript:void(0)">
             <i class="fa fa-dashboard"></i> <span>Quản lý danh mục</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -46,7 +46,7 @@
         <li class="treeview <% if (active_parent == 'article') { %>
           active
         <% } %>">
-          <a href="#">
+          <a href="javascript:void(0)">
             <i class="fa fa-dashboard"></i> <span>Quản lý bài viết</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -64,7 +64,7 @@
         <li class="treeview <% if (active_parent == 'role') { %>
           active
         <% } %>">
-          <a href="#">
+          <a href="javascript:void(0)">
             <i class="fa fa-dashboard"></i> <span>Quản lý vai trò</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -78,6 +78,29 @@
               class="active"
             <% } %>><a href="/admin/role/add"><i class="fa fa-circle-o"></i> Thêm vai trò</a></li>
           </ul>
+        </li>
+        <li class="treeview <% if (active_parent == 'user') { %>
+          active
+        <% } %>">
+          <a href="javascript:void(0)">
+            <i class="fa fa-dashboard"></i> <span>Quản lý tài khoản</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li <% if ((active_parent == 'user') && (active == 'list')) { %>
+              class="active"
+            <% } %>><a href="/admin/user/list"><i class="fa fa-circle-o"></i> Danh sách tài khoản</a></li>
+            <li <% if ((active_parent == 'user') && (active == 'add')) { %>
+              class="active"
+            <% } %>><a href="/admin/user/add"><i class="fa fa-circle-o"></i> Thêm tài khoản</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="/admin/logout">
+            <i class="fa fa-th"></i> <span>Đăng xuất</span>
+          </a>
         </li>
       </ul>
     </section>

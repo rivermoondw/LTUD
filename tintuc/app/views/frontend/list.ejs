@@ -1,0 +1,50 @@
+<section id="contentSection">
+  <div class="row">
+    <div class="col-lg-8 col-md-8 col-sm-8">
+      <div class="left_content">
+        <div class="single_page">
+          <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li class="active"><%=pageTitle%></li>
+          </ol>
+          <div class="single_sidebar">
+            <ul class="spost_nav">
+              <% listNews.map(function(news){ %>
+                <li>
+                  <div class="media wow fadeInDown"> <a href="<%= news.catSlug %>/<%= news.newsSlug %>" class="media-left"> <img alt="" src="upload/article/<%=news.url_img%>"> </a>
+                    <div class="media-body">
+                      <h4 class="media-heading">
+          						  <a href="<%= news.catSlug %>/<%= news.newsSlug %>" class="catg_title"><%= news.newsTitle %></a>
+          						</h4>
+                      <br/>
+                      <p><%= news.introduction %></p>
+                    </div>
+                    <div class="media-bottom">
+                      <div class="post_commentbox"> <a href="#"><i class="fa fa-user"></i><%= news.name %></a> <a><i class="fa fa-calendar"></i>6:49 AM</a> <a href="#"><i class="fa fa-tags"></i><%= news.catTitle %></a> </div>
+                    </div>
+                  </div>
+                </li>
+              <% }) %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4">
+      <aside class="right_content">
+        <div class="single_sidebar">
+          <h2><span>Bài viết nổi bật</span></h2>
+          <ul class="spost_nav">
+            <% hotNews.forEach(function(news){ %>
+              <li>
+                <div class="media"> <a href="<%= news.catSlug %>/<%= news.newsSlug %>" class="media-left"> <img alt="" src="upload/article/<%= news.url_img %>"> </a>
+                  <div class="media-body"> <a href="<%= news.catSlug %>/<%= news.newsSlug %>" class="catg_title"><%= news.newsTitle %></a> </div>
+                </div>
+              </li>
+            <% }) %>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>

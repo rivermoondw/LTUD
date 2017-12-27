@@ -46,7 +46,7 @@ exports.getId = function(id, callback) {
     else callback(null, result);
   });
 }
-exports.edit = function(fields, data, id) {
+exports.edit = function(fields, data, id, permission) {
   var sql = squel.update({
     autoQuoteFieldNames: true
   }).table(main_table);
@@ -56,15 +56,42 @@ exports.edit = function(fields, data, id) {
   sql = sql.where("\`id\` = " + parseInt(id));
   var query = con.query(sql.toString(), function(err, result) {
     if (err) throw err;
+		let sql = squel.delete({autoQuoteFieldNames:true}).from(permission_table)
+							.where("role_id = "+parseInt(id))
+		;
+		let query = con.query(sql.toString(), function(err, results){
+			if (err) throw err;
+			if (result.affectedRows > 0) {
+				var insertData = [];
+				permission.map(function(permission, i){
+					insertData.push({role_id: parseInt(id), permission: permission})
+				});
+				let sql = squel.insert({autoQuoteFieldNames:true}).into(permission_table).setFieldsRows(insertData);
+				let query = con.query(sql.toString(), function(err, results){
+					if (err) throw err;
+					console.log(results.affectedRows+" permission updated");
+				});
+			}
+		});
     console.log("1 record updated");
   });
 }
-exports.del = function(id) {
+exports.del = function(id, callback) {
   var sql = squel.delete({
     autoQuoteFieldNames: true
   }).from(main_table).where("\`id\` = " + parseInt(id));
   var query = con.query(sql.toString(), function(err, result) {
     if (err) throw err;
+		if (result.affectedRows > 0) {
+			let sql = squel.delete({autoQuoteFieldNames:true}).from(permission_table).where("role_id = "+parseInt(id));
+			let query = con.query(sql.toString(), function(err, result) {
+				if (err) callback(err, null);
+				else {
+					console.log(result.affectedRows+" permissions deleted");
+					callback(null, err)
+				}
+			});
+		}
     console.log("1 record deleted");
   });
 }

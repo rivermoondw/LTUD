@@ -1,5 +1,6 @@
 var LocalStrategy = require('passport-local').Strategy;
 var user = require('../app/models/admin/m_user.js');
+var md5 = require('md5');
 
 module.exports = function(passport) {
 	passport.serializeUser(function(user, done){
@@ -21,7 +22,8 @@ module.exports = function(passport) {
 			if (!user.length){
 				return done(null, false, req.flash('loginMessage', 'Tài khoản không tồn tại!'));
 			}
-			if (password != user[0].password){
+			var comparePassword = md5(md5(user[0].salt)+md5(md5(password)));
+			if (comparePassword != user[0].password){
 				return done(null, false, req.flash('loginMessage', 'Sai tài khoản hoặc mật khẩu'));
 			}
 			return done(null, user[0]);

@@ -1,0 +1,82 @@
+<div class="row">
+  <div class="box box-primary">
+    <div class="box-body no-padding">
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th><input type="checkbox" id="checkAll"></th>
+            <th>Email</th>
+            <th>Họ tên</th>
+            <th>Vai trò</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="table-data">
+          <% if (rows.length > 0) {
+						rows.forEach(function(row){
+					%>
+            <tr>
+              <td><input type="checkbox" name="del[]" userid="<%=row.id%>"></td>
+              <td>
+                <%= row.email %>
+              </td>
+              <td>
+                <%= row.name %>
+              </td>
+              <td>
+                <%= row.title %>
+              </td>
+              <td>
+                <a href="/admin/user/edit/<%=row.id%>"><button class="btn btn-default btn-xs" type="button">Sửa</button></a>
+                <button class="btn btn-default btn-xs del-btn" type="button" userid="<%=row.id%>">Xóa</button>
+              </td>
+            </tr>
+            <% })}else { %>
+              <tr>
+                <td colspan="5">Không có dữ liệu</td>
+              </tr>
+              <% } %>
+        </tbody>
+      </table>
+    </div>
+    <div class="box-footer no-border">
+      <a href="/admin/user/add"><button type="button" class="btn btn-default btn-sm"><i class="fa fa-plus"></i> Thêm tài khoản</button></a>
+      <button type="submit" name="btn-delete" value="btn-delete" class="btn btn-default btn-sm" id="del-list"><i class="fa fa-trash-o"></i> Xóa lựa chọn</button>
+    </div>
+  </div>
+</div>
+<!-- ./row -->
+<script>
+  $(document).ready(function() {
+    $('.del-btn').click(function() {
+      var r = confirm("Bạn có muốn xóa không?");
+      if (r == true) {
+        var id = $(this).attr('userid');
+        var url = '/admin/user/del/' + id;
+        var delBtn = $(this);
+        $.post(url, function(data, status) {
+          if (status == 'success') {
+            delBtn.parents('tr').remove();
+          }
+        });
+      } else event.preventDefault();
+    });
+    $('#del-list').click(function() {
+      var r = confirm("Bạn có muốn xóa không?");
+      if (r == true) {
+        $('input[name="del[]"]').each(function(index) {
+          if ($(this).is(':checked')) {
+            var id = $(this).attr('userid');
+            var btn = $(this);
+            var url = '/admin/user/del/' + id;
+            $.post(url, function(data, status) {
+              if (status == 'success') {
+                btn.parents('tr').remove();
+              }
+            });
+          }
+        });
+      } else event.preventDefault();
+    });
+  });
+</script>
